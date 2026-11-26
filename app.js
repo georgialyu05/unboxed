@@ -41,12 +41,12 @@ function setOpen(E, v){
 }
 
 /* ---------- sticker geometry ---------- */
-function sizeFor(E, it, k=1){ const S = E.W*0.36*k, a = it.w/it.h; let w = S*Math.sqrt(a), h = S/Math.sqrt(a);
-  const m = E.W*0.5*k; if (w>m){h*=m/w;w=m;} if (h>m){w*=m/h;h=m;} return {w,h}; }
+function sizeFor(E, it, k=1){ const S = E.W*0.46*k, a = it.w/it.h; let w = S*Math.sqrt(a), h = S/Math.sqrt(a);
+  const m = E.W*0.6*k; if (w>m){h*=m/w;w=m;} if (h>m){w*=m/h;h=m;} return {w,h}; }
 const T = p => `translate(${p.x}px,${p.y}px) translate(-50%,-50%) rotate(${p.r}deg) scale(${p.s})`;
-function peekPos(E, i, n, h){ const g=GEO; const span = n<=1?0:Math.min(0.42, 0.1*n);
+function peekPos(E, i, n, h){ const g=GEO; const span = n<=1?0:Math.min(0.5, 0.12*n);
   const x = E.W*(0.5 + (n<=1?0:(i/(n-1)-0.5)*span)) + rnd(-6,6);
-  return { x, y: E.H*(g.bt + (g.ny-g.bt)*0.55)/100 + rnd(-6,10), r: rnd(-11,11), s: 0.62 }; }
+  return { x, y: E.H*g.bt/100 + h*0.08 + rnd(-6,10), r: rnd(-11,11), s: 0.7 }; }
 function tuckPos(E, p, h){ return { ...p, y: E.H*(GEO.bb/100) - h*0.62/2 - E.H*0.05, s: 0.6, r: p.r*0.6 }; }
 
 function addSticker(E, it, {pos, layer='inside'}={}){
@@ -76,7 +76,7 @@ function scatterTargets(E, n){
     const t = m===1 ? 0.5 : k/(m-1);
     const ang = (a0 + (a1-a0)*t + rnd(-5,5)) * Math.PI/180;
     const R = inRing1 ? 1 : 1.5;
-    pts.push({ x: O.x + Math.cos(ang)*E.W*1.02*R, y: O.y + Math.sin(ang)*E.H*0.95*R, r: rnd(-12,12), s: n>10 ? 0.8 : 1 });
+    pts.push({ x: O.x + Math.cos(ang)*E.W*0.98*R, y: O.y + Math.sin(ang)*E.H*0.86*R, r: rnd(-12,12), s: n>10 ? 0.8 : 1 });
   }
   // keep on screen + nudge apart
   const box = S => ({ hw: S.w*S.p2.s/2, hh: S.h*S.p2.s/2 });

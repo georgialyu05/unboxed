@@ -46,7 +46,7 @@ function sizeFor(E, it, k=1){ const S = E.W*0.36*k, a = it.w/it.h; let w = S*Mat
 const T = p => `translate(${p.x}px,${p.y}px) translate(-50%,-50%) rotate(${p.r}deg) scale(${p.s})`;
 function peekPos(E, i, n, h){ const g=GEO; const span = n<=1?0:Math.min(0.42, 0.1*n);
   const x = E.W*(0.5 + (n<=1?0:(i/(n-1)-0.5)*span)) + rnd(-6,6);
-  return { x, y: E.H*(g.bt + (g.ny-g.bt)*0.55) + rnd(-6,10), r: rnd(-11,11), s: 0.62 }; }
+  return { x, y: E.H*(g.bt + (g.ny-g.bt)*0.55)/100 + rnd(-6,10), r: rnd(-11,11), s: 0.62 }; }
 function tuckPos(E, p, h){ return { ...p, y: E.H*(GEO.bb/100) - h*0.62/2 - E.H*0.05, s: 0.6, r: p.r*0.6 }; }
 
 function addSticker(E, it, {pos, layer='inside'}={}){
